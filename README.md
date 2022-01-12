@@ -36,6 +36,11 @@ To get a local copy up and running follow these simple example steps.
 - Run 'rails server' to start the server
 - Open the web browser and go to 'localhost:3000' to see the web page
 
+### Run tests
+
+- Open the project directory on the terminal
+- Run 'rspec' to run tests
+
 ## Authors
 
 👤 **Luis Octavio Ramirez Cruz**
@@ -47,7 +52,6 @@ To get a local copy up and running follow these simple example steps.
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-
 Feel free to check the [issues page](https://github.com/LOctavio/nft-gaming-blog/issues).
 
 ## Show your support
