@@ -50,3 +50,27 @@
     align-self: flex-end;
     padding-bottom: 20px;
 }
+
+.post-preview {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+.bio, .post-preview {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.comments-and-likes-count {
+    align-self: flex-end;
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.button {
+    padding-top: 20px;
+    text-align: center;
+}
