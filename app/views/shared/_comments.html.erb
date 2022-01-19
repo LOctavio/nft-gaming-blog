@@ -1,0 +1,9 @@
+<div class="comments box">
+    <% if post.most_recent_comments.count > 0 %>
+        <% post.most_recent_comments.each do |comment| %>
+            <span><%= comment.author.name %>: <%= comment.text %></span>
+        <% end %>
+    <% else %>
+            <span>No comments</span>
+    <% end %>
+</div>
