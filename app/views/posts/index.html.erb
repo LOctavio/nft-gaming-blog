@@ -4,15 +4,7 @@
         <%= link_to user_post_path(@user, post) do %>
             <div class="post-and-comments-preview">
                 <%= render "shared/post_preview", post: post %>
-                <div class="comments box">
-                    <% if post.most_recent_comments.count > 0 %>
-                        <% post.most_recent_comments.each do |comment| %>
-                            <span><%= comment.author.name %>: <%= comment.text %></span>
-                        <% end %>
-                    <% else %>
-                            <span>No comments</span>
-                    <% end %>
-                </div>
+                <%= render "shared/comments", post: post %>
             </div>
         <% end %>
     <% end %>
