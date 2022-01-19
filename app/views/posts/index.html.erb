@@ -1,1 +1,19 @@
-<h1>Here is a list of posts for a given user</h1>
+<%= render "shared/user_card", user: @user %>
+<div>
+    <% @posts.each do |post| %>
+        <%= link_to user_post_path(@user, post) do %>
+            <div class="post-and-comments-preview">
+                <%= render "shared/post_preview", post: post %>
+                <div class="comments box">
+                    <% if post.most_recent_comments.count > 0 %>
+                        <% post.most_recent_comments.each do |comment| %>
+                            <span><%= comment.author.name %>: <%= comment.text %></span>
+                        <% end %>
+                    <% else %>
+                            <span>No comments</span>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+</div>
