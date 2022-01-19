@@ -73,7 +73,6 @@
 .comments {
     display: flex;
     flex-direction: column;
-
 }
 
 .box {
@@ -83,4 +82,9 @@
 
 .post-and-comments-preview {
     padding: 10px 0;
+}
+
+.post-title {
+    display: flex;
+    justify-content: space-between;
 }
