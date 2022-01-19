@@ -17,3 +17,31 @@
  .main-container {
      padding: 20px 50px;
  }
+
+.user-card {
+    display: flex;
+    padding: 10px 0;
+}
+
+.profile-image {
+    border: 1px solid black;
+}
+
+.user-info {
+    display: flex;
+    flex-grow: 2;
+    justify-content: space-between;
+    border: 1px solid black;
+    margin: 10px 0 10px 50px;
+    padding: 0 30px;
+}
+
+.user-name {
+    font-size: 50px;
+    line-height: 134px;
+}
+
+.posts-count {
+    align-self: flex-end;
+    padding-bottom: 20px;
+}
