@@ -30,6 +30,7 @@ To get a local copy up and running follow these simple example steps.
 - Open the project directory on the terminal
 - Inside the project's directory run 'bundle install' to install all the dependencies
 - run 'rails db:migrate' to migrate the database
+- run 'rails db:seed' to add some data in the database using a seed file
 
 ### Usage
 
