@@ -1,0 +1,7 @@
+<%= form_with(model: [@user, @post]) do |form| %>
+    <%= form.text_field :title %>
+    <%= form.text_field :text %>
+    <%= form.hidden_field :comments_counter, value: 0 %>
+    <%= form.hidden_field :likes_counter, value: 0 %>
+    <%= form.submit "Register" %>
+<% end %>
