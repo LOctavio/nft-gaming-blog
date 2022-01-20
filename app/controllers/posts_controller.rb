@@ -8,9 +8,7 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = @user.posts.new(post_params)
 
-    if @post.save
-      redirect_to @user
-    end
+    redirect_to @user if @post.save
   end
 
   def index
