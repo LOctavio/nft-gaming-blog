@@ -4,7 +4,7 @@
         <%= link_to user_post_path(@user, post) do %>
             <div class="post-and-comments-preview">
                 <%= render "shared/post_preview", post: post %>
-                <%= render "shared/comments", post: post %>
+                <%= render "shared/comments", comments: post.most_recent_comments %>
             </div>
         <% end %>
     <% end %>

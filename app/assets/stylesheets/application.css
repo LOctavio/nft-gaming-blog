@@ -88,3 +88,9 @@ a {
   display: flex;
   justify-content: space-between;
 }
+
+.like-icon {
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
