@@ -5,11 +5,11 @@ class LikesController < ApplicationController
       post_id: params[:post_id]
     )
 
-    if like.save
-      flash[:notice] = "You have successfully liked this post"
-    else
-      flash[:notice] = "You have not liked this post"
-    end
+    flash[:notice] = if like.save
+                       'You have successfully liked this post'
+                     else
+                       'You have not liked this post'
+                     end
     redirect_back(fallback_location: root_path)
   end
 end

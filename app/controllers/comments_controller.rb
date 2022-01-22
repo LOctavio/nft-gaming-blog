@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
 
     if comment.save
       redirect_to user_post_path(id: params[:post_id])
-      flash[:notice] = "You have successfully created a comment"
+      flash[:notice] = 'You have successfully created a comment'
     else
       redirect_back(fallback_location: root_path)
-      flash[:alert] = "Your comment was not created"
+      flash[:alert] = 'Your comment was not created'
     end
   end
 
