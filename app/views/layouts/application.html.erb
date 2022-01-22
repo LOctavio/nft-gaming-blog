@@ -14,6 +14,9 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
     <div class="main-container">
       <%= yield %>
     </div>

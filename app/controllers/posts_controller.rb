@@ -8,12 +8,18 @@ class PostsController < ApplicationController
     @user = User.find(current_user.id)
     @post = @user.posts.new(post_params)
 
-    redirect_to @user if @post.save
+    if @post.save
+      redirect_to @user
+      flash[:notice] = 'You have successfully created a post'
+    else
+      redirect_back(fallback_location: root_path)
+      flash[:alert] = 'Your post was not created'
+    end
   end
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.all
+    @posts = @user.posts.includes(:comments)
   end
 
   def show
