@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -33,9 +31,9 @@ class Ability
 
     can :destroy, Post, author: user
     can :destroy, Comment, author: user
-    return unless user.role == 'admin'  # additional permissions for administrators
+    return unless user.role == 'admin' # additional permissions for administrators
+
     can :destroy, Post
     can :destroy, Comment
-
   end
 end
