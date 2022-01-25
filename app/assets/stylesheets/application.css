@@ -94,3 +94,15 @@ a {
   display: flex;
   justify-content: flex-end;
 }
+
+.forms-section,
+.field,
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.forms-section {
+  padding-top: 50px;
+}
