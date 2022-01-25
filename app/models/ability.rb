@@ -32,7 +32,7 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     can :destroy, Post, author: user
-    return unless user.role = 'admin'  # additional permissions for administrators
+    return unless user.role == 'admin'  # additional permissions for administrators
     can :destroy, Post
 
   end
