@@ -16,4 +16,4 @@
 <%= render "shared/comments", comments: @post.comments %>
 <% if can? :destroy, @post %>
    <%= button_to 'Delete Post', user_post_path, method: :delete%>
-<% else %>
+<% end %>
