@@ -95,12 +95,20 @@ a {
   justify-content: flex-end;
 }
 
+.sign-in-field {
+  width: 80vw;
+}
+
 .forms-section,
 .field,
 .actions {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.field {
+  margin-bottom: 20px;
 }
 
 .forms-section {
