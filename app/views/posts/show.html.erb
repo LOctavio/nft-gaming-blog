@@ -14,3 +14,6 @@
     </div>
 </div>
 <%= render "shared/comments", comments: @post.comments %>
+<% if can? :manage, @post %>
+   <%= button_to 'Delete Post', user_post_path, method: :delete%>
+<% end %>
