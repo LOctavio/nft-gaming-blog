@@ -14,9 +14,11 @@ RSpec.describe 'User', type: :system do
       fill_in 'Username', with: 'luis@gmail.com'
       fill_in 'Password', with: '123456'
       click_button 'Log in'
-      post = User.all[0].posts.new(title: 'New post 1',
-                                   text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                   comments_counter: 0, likes_counter: 0)
+      post = User.find_by(email: 'luis@gmail.com').posts.new(
+        title: 'New post 1',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
       post.save
       User.all[1].comments.create!(text: 'Well Done 👏👏👏', post: Post.all[0])
       User.all[1].comments.create!(text: 'really nice post Luis', post: Post.all[0])

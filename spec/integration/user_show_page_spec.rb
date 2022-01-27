@@ -47,7 +47,7 @@ RSpec.describe 'Show page', type: :system do
       )
       User.all[0].posts.create!(
         title: 'New post 4',
-        ext: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
         comments_counter: 0, likes_counter: 0
       )
       visit user_path(User.all[0].id)
