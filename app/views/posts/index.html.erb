@@ -6,4 +6,8 @@
             <%= render "shared/comments", comments: post.most_recent_comments %>
         </div>
     <% end %>
+
+    <%if @posts.length > 5 %>
+        <button>Pagination</button>
+    <%end%>
 </div>
