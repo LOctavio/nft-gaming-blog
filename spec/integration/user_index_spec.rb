@@ -4,17 +4,11 @@ def create_test_users
   before(:each) do
     visit new_user_session_path
     User.create(name: 'Luis', email: 'luis@gmail.com', password: '123456', photo: 'image1',
-                bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet et
-                lorem at volutpat. Aenean vel justo diam. Vivamus ultricies vulputate dolor, et
-                molestie turpis convallis et. In sed metus.', posts_counter: 0)
+                bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0)
     User.create(name: 'John', email: 'john@gmail.com', password: '123456', photo: 'image1',
-                bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet et lorem
-                at volutpat. Aenean vel justo diam. Vivamus ultricies vulputate dolor, et molestie turpis
-                convallis et. In sed metus.', posts_counter: 0)
+                bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0)
     User.create(name: 'Octavio', email: 'octavio@gmail.com', password: '123456', photo: 'image1',
-                bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet et lorem
-                at volutpat. Aenean vel justo diam. Vivamus ultricies vulputate dolor, et molestie turpis
-                convallis et. In sed metus.', posts_counter: 0)
+                bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0)
     fill_in 'Username', with: 'luis@gmail.com'
     fill_in 'Password', with: '123456'
     click_button 'Log in'
@@ -56,34 +50,29 @@ RSpec.describe 'User index page', type: :system do
   end
 
   describe 'can see the number of posts each user has written' do
+    create_test_users
     it 'can see that first users posts are 1' do
-      post = User.all[0].posts.create!(title: 'New post 4',
-                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                       Duis a interdum odio. Cras dictum convallis euismod.
-                                       Pellentesque imperdiet elementum augue ut bibendum.
-                                       Donec ut risus urna. Etiam fringilla lacinia dui.',
+      post = User.find_by(email: 'luis@gmail.com').posts.create!(title: 'New post 4',
+                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                        comments_counter: 0, likes_counter: 0)
-      expect(post.author.posts_counter).to eq 1
+      visit users_path
+      expect(User.find_by(email: 'luis@gmail.com').posts_counter).to eq 1
     end
 
     it 'can see that second users posts are 1' do
-      post = User.all[1].posts.create!(title: 'New post 4',
-                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                       Duis a interdum odio. Cras dictum convallis euismod.
-                                       Pellentesque imperdiet elementum augue ut bibendum.
-                                       Donec ut risus urna. Etiam fringilla lacinia dui.',
+      post = User.find_by(email: 'john@gmail.com').posts.create!(title: 'New post 4',
+                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                        comments_counter: 0, likes_counter: 0)
-      expect(post.author.posts_counter).to eq 1
+      visit users_path
+      expect(User.find_by(email: 'john@gmail.com').posts_counter).to eq 1
     end
 
     it 'can see that third users posts are 1' do
-      post = User.all[2].posts.create!(title: 'New post 4',
-                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                       Duis a interdum odio. Cras dictum convallis euismod.
-                                       Pellentesque imperdiet elementum augue ut bibendum.
-                                       Donec ut risus urna. Etiam fringilla lacinia dui.',
+      post = User.find_by(email: 'octavio@gmail.com').posts.create!(title: 'New post 4',
+                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                        comments_counter: 0, likes_counter: 0)
-      expect(post.author.posts_counter).to eq 1
+      visit users_path
+      expect(User.find_by(email: 'octavio@gmail.com').posts_counter).to eq 1
     end
   end
 

@@ -4,10 +4,7 @@ RSpec.describe 'Show page', type: :system do
   describe 'show page' do
     before(:each) do
       User.create(name: 'Luis', email: 'luis@gmail.com', password: '123456', photo: 'image1',
-                  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                         Nulla aliquet et lorem at volutpat. Aenean vel justo diam.
-                         Vivamus ultricies vulputate dolor, et molestie turpis convallis et.
-                         In sed metus.', posts_counter: 0)
+                  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0)
       visit new_user_session_path
       fill_in 'Username', with: 'luis@gmail.com'
       fill_in 'Password', with: '123456'
@@ -24,40 +21,24 @@ RSpec.describe 'Show page', type: :system do
     end
     it 'Can see the number of posts' do
       User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis a interdum odio. Cras dictum convallis euismod.
-                                Pellentesque imperdiet elementum augue ut bibendum.
-                                Donec ut risus urna. Etiam fringilla lacinia dui.',
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                 comments_counter: 0, likes_counter: 0)
       visit user_path(User.all[0].id)
       expect(page).to have_content 'Number of posts: 1'
     end
     it "I can see the user's bio." do
-      expect(page).to have_content 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Nulla aliquet et lorem at volutpat. Aenean vel justo diam.
-      Vivamus ultricies vulputate dolor, et molestie turpis convallis et. In sed metus.'
+      expect(page).to have_content User.all[0].bio
     end
     it "I can see the user's first 3 posts." do
       User.all[0].posts.create!(title: 'New post 1',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Proin eros tellus, facilisis eget nisi sed, tempus laoreet neque.
-                                Nunc gravida sit amet elit in euismod. Etiam eu tincidunt augue.
-                                Fusce.', comments_counter: 0, likes_counter: 0)
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', comments_counter: 0, likes_counter: 0)
       User.all[0].posts.create!(title: 'New post 2',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Praesent elementum turpis in sapien feugiat, sit amet ultrices dui pretium.
-                                Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut.',
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                 comments_counter: 0, likes_counter: 0)
       User.all[0].posts.create!(title: 'New post 3',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Nulla sit amet eros accumsan, cursus metus lobortis, tincidunt erat.
-                                Nam blandit odio risus, et placerat sem gravida vitae.
-                                Nunc rhoncus sollicitudin.', comments_counter: 0, likes_counter: 0)
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', comments_counter: 0, likes_counter: 0)
       User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis a interdum odio. Cras dictum convallis euismod.
-                                Pellentesque imperdiet elementum augue ut bibendum.
-                                Donec ut risus urna. Etiam fringilla lacinia dui.',
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                 comments_counter: 0, likes_counter: 0)
       visit user_path(User.all[0].id)
       post = page.all('div', class: 'post-preview')
@@ -68,10 +49,7 @@ RSpec.describe 'Show page', type: :system do
     end
     it "When I click a user's post, it redirects me to that post's show page." do
       User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis a interdum odio. Cras dictum convallis euismod.
-                                Pellentesque imperdiet elementum augue ut bibendum.
-                                Donec ut risus urna. Etiam fringilla lacinia dui.',
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                 comments_counter: 0, likes_counter: 0)
       visit user_path(User.all[0].id)
       user_id = User.all[0].id
@@ -82,10 +60,7 @@ RSpec.describe 'Show page', type: :system do
     end
     it "When I click a user's post, it redirects me to that post's show page." do
       User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Duis a interdum odio. Cras dictum convallis euismod.
-                                Pellentesque imperdiet elementum augue ut bibendum.
-                                Donec ut risus urna. Etiam fringilla lacinia dui.',
+                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                 comments_counter: 0, likes_counter: 0)
       visit user_path(User.all[0].id)
       user_id = User.all[0].id

@@ -3,14 +3,13 @@ require 'rails_helper'
 RSpec.describe 'Users Post Index Page', type: :system do
   def create_post
     User.find_by(email: 'luis@gmail.com').posts.create!(title: 'New post 4',
-                                                        text: 'Lorem ipsum dolor sit amet,
-                                                               consectetur adipiscing elit.
-                                                               Duis a interdum odio.
-                                                               Cras dictum convallis euismod.
-                                                               Pellentesque imperdiet elementum augue ut
-                                                               bibendum. Donec ut risus urna.
-                                                               Etiam fringilla lacinia dui.',
+                                                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                                                         comments_counter: 0, likes_counter: 0)
+  end
+
+  def create_user_luis
+    User.create(name: 'Luis', email: 'luis@gmail.com', password: '123456', photo: 'image1',
+                  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0)
   end
 
   def visit_post_index_path(user_id)
@@ -31,6 +30,7 @@ RSpec.describe 'Users Post Index Page', type: :system do
 
   describe 'Users Post Index Page' do
     before(:each) do
+      create_user_luis
       create_post
       visit new_user_session_path
       fill_in 'Username', with: 'luis@gmail.com'
@@ -59,9 +59,7 @@ RSpec.describe 'Users Post Index Page', type: :system do
 
     it "Can see some of the post's body" do
       create_post_and_visit_path
-      expect(page).to have_content 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Duis a interdum odio. Cras dictum convallis euismod. Pellentesque imperdiet elementum augue
-      ut bibendum. Donec ut risus urna. Etiam fringilla lacinia dui.'
+      expect(page).to have_content Post.all[0].text
     end
 
     it 'Can see the first comments on a post.' do
