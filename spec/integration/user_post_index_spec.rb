@@ -2,14 +2,18 @@ require 'rails_helper'
 
 RSpec.describe 'Users Post Index Page', type: :system do
   def create_post
-    User.find_by(email: 'luis@gmail.com').posts.create!(title: 'New post 4',
-                                                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                                        comments_counter: 0, likes_counter: 0)
+    User.find_by(email: 'luis@gmail.com').posts.create!(
+      title: 'New post 4',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      comments_counter: 0, likes_counter: 0
+    )
   end
 
   def create_user_luis
-    User.create(name: 'Luis', email: 'luis@gmail.com', password: '123456', photo: 'image1',
-                  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0)
+    User.create(
+      name: 'Luis', email: 'luis@gmail.com', password: '123456', photo: 'image1',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', posts_counter: 0
+    )
   end
 
   def visit_post_index_path(user_id)

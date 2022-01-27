@@ -30,16 +30,26 @@ RSpec.describe 'Show page', type: :system do
       expect(page).to have_content User.all[0].bio
     end
     it "I can see the user's first 3 posts." do
-      User.all[0].posts.create!(title: 'New post 1',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', comments_counter: 0, likes_counter: 0)
-      User.all[0].posts.create!(title: 'New post 2',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                comments_counter: 0, likes_counter: 0)
-      User.all[0].posts.create!(title: 'New post 3',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.', comments_counter: 0, likes_counter: 0)
-      User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                comments_counter: 0, likes_counter: 0)
+      User.all[0].posts.create!(
+        title: 'New post 1',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
+      User.all[0].posts.create!(
+        title: 'New post 2',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
+      User.all[0].posts.create!(
+        title: 'New post 3',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
+      User.all[0].posts.create!(
+        title: 'New post 4',
+        ext: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
       visit user_path(User.all[0].id)
       post = page.all('div', class: 'post-preview')
       expect(post.count).to eq(3)
@@ -48,9 +58,11 @@ RSpec.describe 'Show page', type: :system do
       expect(page).to have_button('See all posts')
     end
     it "When I click a user's post, it redirects me to that post's show page." do
-      User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                comments_counter: 0, likes_counter: 0)
+      User.all[0].posts.create!(
+        title: 'New post 4',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
       visit user_path(User.all[0].id)
       user_id = User.all[0].id
       post_id = User.first.posts[0]
@@ -59,9 +71,11 @@ RSpec.describe 'Show page', type: :system do
       expect(page).to have_current_path(user_post_path(user_id: user_id, id: post_id))
     end
     it "When I click a user's post, it redirects me to that post's show page." do
-      User.all[0].posts.create!(title: 'New post 4',
-                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                comments_counter: 0, likes_counter: 0)
+      User.all[0].posts.create!(
+        title: 'New post 4',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
       visit user_path(User.all[0].id)
       user_id = User.all[0].id
       click_button 'See all posts'

@@ -52,25 +52,34 @@ RSpec.describe 'User index page', type: :system do
   describe 'can see the number of posts each user has written' do
     create_test_users
     it 'can see that first users posts are 1' do
-      post = User.find_by(email: 'luis@gmail.com').posts.create!(title: 'New post 4',
-                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                       comments_counter: 0, likes_counter: 0)
+      User.find_by(email: 'luis@gmail.com').posts.create!(
+        title: 'New post 4',
+        text:
+        'Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
       visit users_path
       expect(User.find_by(email: 'luis@gmail.com').posts_counter).to eq 1
     end
 
     it 'can see that second users posts are 1' do
-      post = User.find_by(email: 'john@gmail.com').posts.create!(title: 'New post 4',
-                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                       comments_counter: 0, likes_counter: 0)
+      User.find_by(email: 'john@gmail.com').posts.create!(
+        title: 'New post 4',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        comments_counter: 0, likes_counter: 0
+      )
       visit users_path
       expect(User.find_by(email: 'john@gmail.com').posts_counter).to eq 1
     end
 
     it 'can see that third users posts are 1' do
-      post = User.find_by(email: 'octavio@gmail.com').posts.create!(title: 'New post 4',
-                                       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                                       comments_counter: 0, likes_counter: 0)
+      User.find_by(email: 'octavio@gmail.com')
+        .posts.create!(
+          title: 'New post 4',
+          text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          comments_counter: 0, likes_counter: 0
+        )
       visit users_path
       expect(User.find_by(email: 'octavio@gmail.com').posts_counter).to eq 1
     end

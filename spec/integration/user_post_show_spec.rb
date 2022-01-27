@@ -21,7 +21,8 @@ RSpec.describe 'User', type: :system do
       User.all[1].comments.create!(text: 'Well Done 👏👏👏', post: Post.all[0])
       User.all[1].comments.create!(text: 'really nice post Luis', post: Post.all[0])
       Like.create!(author: User.all[1], post: Post.all[0])
-      visit user_post_path(user_id: User.find_by(email: 'luis@gmail.com').id, id: User.find_by(email: 'luis@gmail.com').posts.first.id)
+      visit user_post_path(user_id: User.find_by(email: 'luis@gmail.com').id,
+                           id: User.find_by(email: 'luis@gmail.com').posts.first.id)
     end
     it "I can see the post's title." do
       expect(page).to have_content('New post 1')
