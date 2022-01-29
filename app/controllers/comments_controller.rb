@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   def index
 
@@ -18,8 +20,11 @@ class CommentsController < ApplicationController
     )
 
     if comment.save
-      redirect_to user_post_path(id: params[:post_id])
-      flash[:notice] = 'You have successfully created a comment'
+      respond_to do |format|
+        format.json {render json: {message: 'You have successfully created a comment'}}
+        format.html {redirect_to user_post_path(id: params[:post_id])
+        flash[:notice] = 'You have successfully created a comment'}
+    end
     else
       redirect_back(fallback_location: root_path)
       flash[:alert] = 'Your comment was not created'
