@@ -1,8 +1,10 @@
-<div class="post-preview box">
-    <span class="title"><%= post.title %></span>
-    <span><%= post.text %></span>
-    <div class="comments-and-likes-count">
-        <span>Comments: <%= post.comments_counter %>, </span>
-        <span>Likes: <%= post.likes_counter %></span>
+<%= link_to user_post_path(post.author, post), class: "post-preview-link" do %>
+    <div class="post-preview box">
+        <span class="title"><%= post.title %></span>
+        <span><%= post.text %></span>
+        <div class="comments-and-likes-count">
+            <span>Comments: <%= post.comments_counter %>, </span>
+            <span>Likes: <%= post.likes_counter %></span>
+        </div>
     </div>
-</div>
+<% end %>

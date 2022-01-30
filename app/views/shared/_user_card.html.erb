@@ -1,5 +1,5 @@
-<div class="user-card">
-    <div class="profile-image"><%= image_tag "profile_icon.png" %></div>
+<div class="user-card" id="user-card">
+    <div class="profile-image"><%= image_tag "profile_icon.png", id: "profile-image#{user.id}" %></div>
     <div class="user-info">
         <span class="user-name"><%= user.name %></span>
         <div class="posts-count">

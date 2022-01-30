@@ -7,9 +7,9 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-luis = User.create!(name: 'Luis', photo: 'image1' , bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet et lorem at volutpat. Aenean vel justo diam. Vivamus ultricies vulputate dolor, et molestie turpis convallis et. In sed metus.', posts_counter: 0)
-octavio = User.create!(name: 'Octavio', photo: 'image2', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper cursus sollicitudin. Etiam nulla augue, pretium at diam tempus, ornare mollis nunc. Ut enim dolor, fringilla vitae metus id, suscipit.', posts_counter: 0)
-john = User.create!(name: 'Jhon', photo: 'image3', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, leo vel cursus auctor, est sapien congue risus, non elementum est justo vel sem. Vestibulum blandit blandit eros eu interdum.', posts_counter: 0)
+luis = User.create!(name: 'Luis', photo: 'image1' , bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla aliquet et lorem at volutpat. Aenean vel justo diam. Vivamus ultricies vulputate dolor, et molestie turpis convallis et. In sed metus.', posts_counter: 0, email: 'luis@gmail.com', password:'123456')
+octavio = User.create!(name: 'Octavio', photo: 'image2', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ullamcorper cursus sollicitudin. Etiam nulla augue, pretium at diam tempus, ornare mollis nunc. Ut enim dolor, fringilla vitae metus id, suscipit.', posts_counter: 0, email: 'octavio@gmail.com', password:'123456')
+john = User.create!(name: 'Jhon', photo: 'image3', bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tincidunt, leo vel cursus auctor, est sapien congue risus, non elementum est justo vel sem. Vestibulum blandit blandit eros eu interdum.', posts_counter: 0, email: 'john@gmail.com', password:'123456')
 
 post1 = luis.posts.create!(title: 'New post 1', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eros tellus, facilisis eget nisi sed, tempus laoreet neque. Nunc gravida sit amet elit in euismod. Etiam eu tincidunt augue. Fusce.', comments_counter: 0, likes_counter: 0)
 post2 = luis.posts.create!(title: 'New post 2', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent elementum turpis in sapien feugiat, sit amet ultrices dui pretium. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut.', comments_counter: 0, likes_counter: 0)

@@ -1,7 +1,7 @@
 <div class="comments box">
     <% if comments.count > 0 %>
         <% comments.each do |comment| %>
-            <span><%= comment.author.name %>: <%= comment.text %></span>
+            <span class="comment-span"><%= comment.author.name %>: <%= comment.text %></span>
             <% if can? :manage, comment %>
                 <%= button_to 'Delete comment', user_post_comment_path(post_id: comment.post.id, id: comment.id), method: :delete%>
             <% end %>

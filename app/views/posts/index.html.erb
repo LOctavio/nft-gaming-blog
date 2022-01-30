@@ -1,11 +1,13 @@
 <%= render "shared/user_card", user: @user %>
 <div>
     <% @posts.each do |post| %>
-        <%= link_to user_post_path(@user, post) do %>
-            <div class="post-and-comments-preview">
-                <%= render "shared/post_preview", post: post %>
-                <%= render "shared/comments", comments: post.most_recent_comments %>
-            </div>
-        <% end %>
+        <div class="post-and-comments-preview">
+            <%= render "shared/post_preview", post: post %>
+            <%= render "shared/comments", comments: post.most_recent_comments %>
+        </div>
     <% end %>
+
+    <%if @posts.length > 5 %>
+        <button>Pagination</button>
+    <%end%>
 </div>

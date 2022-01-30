@@ -8,7 +8,7 @@
     </div>
     <span><%= @post.text %></span>
     <div class="like-icon">
-        <%= button_to user_post_likes_path(@post.author.id, @post) do %>
+        <%= button_to user_post_likes_path(@post.author.id, @post), class:"like-button" do %>
             <i class="far fa-thumbs-up"></i>
         <% end %>
     </div>
